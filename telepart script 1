@@ -1,0 +1,15 @@
+local telepart = script.Parent
+
+local TeleportService = game:GetService('TeleportService')
+
+local placeID = 12207027795
+
+local  canTeleport = true
+local function othergame (otherpart)
+	local player = game.Players:FindFirstChild(otherpart.Parent.Name)
+	if player and canTeleport then
+		canTeleport = false
+		TeleportService:Teleport(placeID, player)
+	end
+end
+telepart.Touched:Connect(othergame)
